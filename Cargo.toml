@@ -1,0 +1,25 @@
+[package]
+name = "llvm_error"
+version = "0.1.0"
+authors = ["Harald Hoyer <harald@redhat.com>"]
+edition = "2018"
+license = "Apache-2.0"
+
+[[bin]]
+name = "llvm_error"
+test = false
+
+[dependencies]
+spinning = { version = "0.1", default-features = false }
+primordial = "0.1"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+incremental = false
+lto = true
+debug = 1
+opt-level = "s"
